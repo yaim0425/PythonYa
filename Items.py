@@ -9,13 +9,11 @@
 # ---------------------------------------------------------
 
 
-
 # ---------------------------------------------------------
 # Librerías a usar
 # ---------------------------------------------------------
 import sqlite3
 # ---------------------------------------------------------
-
 
 
 # ---------------------------------------------------------
@@ -45,6 +43,7 @@ class Items:
         # Retornar la conexión
         # para que se pueda usar en otras funciones
         return conexion
+
     # -----------------------------------------------------
 
     # -----------------------------------------------------
@@ -73,6 +72,7 @@ class Items:
 
         # Se cierra la conexión
         cone.close()
+
     # -----------------------------------------------------
 
     # -----------------------------------------------------
@@ -80,7 +80,7 @@ class Items:
         try:
             # Abre la conexión a la base de datos
             cone = self.open()
-            
+
             # Se usa un cursor para ejecutar la consulta
             cursor = cone.cursor()
 
@@ -102,6 +102,7 @@ class Items:
         finally:
             # Se cierra la conexión
             cone.close()
+
     # -----------------------------------------------------
 
     # -----------------------------------------------------
@@ -109,7 +110,7 @@ class Items:
         try:
             # Abre la conexión a la base de datos
             cone = self.open()
-            
+
             # Se usa un cursor para ejecutar la consulta
             cursor = cone.cursor()
 
@@ -130,4 +131,6 @@ class Items:
         finally:
             # Se cierra la conexión
             cone.close()
+
+
 # ---------------------------------------------------------
