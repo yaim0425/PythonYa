@@ -15,7 +15,8 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox as mb
 from tkinter import scrolledtext as st
-# import Items
+# ---------------------------------------------------------
+import Items
 # ---------------------------------------------------------
 
 
@@ -26,16 +27,13 @@ class Form:
     # -----------------------------------------------------
     def __init__(self):
         # -------------------------------------------------
-        # # Inicialización de la clase Items y la ventana principal
-        # self.item = Items.Items()
+        # Inicialización de la clase Items y la ventana principal
+        self.item = Items.Items()
 
-        # Creación de la ventana principal y el cuaderno de pestañas
+        # Creación de la ventana principal, estableciendo título y tamaño
+        # y evitando que se pueda redimensionar
         self.window = tk.Tk()
-
-        # Configuración de la ventana principal
         self.window.title("Item Management")
-
-        # Evita que la ventana se pueda redimensionar
         self.window.resizable(False, False)
 
         # Creación del cuaderno de pestañas
@@ -61,29 +59,31 @@ class Form:
 
     # -----------------------------------------------------
     def tab_new_item(self):
+        # Creación de la pestaña para nuevos artículos
         self.page1 = ttk.Frame(self.notebook)
-        self.notebook.add(self.page1, text="Load Items")
+        self.notebook.add(self.page1, text="New items")
+
+        # Creación del marco de etiqueta para el artículo
         self.label_frame1 = ttk.LabelFrame(self.page1, text="Item")
         self.label_frame1.grid(column=0, row=0, padx=5, pady=10)
 
-        self.label1 = ttk.Label(self.label_frame1, text="Description:")
+        # Creación de la etiqueta y entrada para el nombre
+        self.label1 = ttk.Label(self.label_frame1, text="Name:")
         self.label1.grid(column=0, row=0, padx=4, pady=4)
         self.description_load = tk.StringVar()
-        self.entry_description = ttk.Entry(
-            self.label_frame1, textvariable=self.description_load
-        )
-        self.entry_description.grid(column=1, row=0, padx=4, pady=4)
-        self.entry_description.focus()
+        self.entry_name = ttk.Entry(self.label_frame1, textvariable=self.description_load)
+        self.entry_name.grid(column=1, row=0, padx=4, pady=4)
+        self.entry_name.focus()
 
+        # Creación de la etiqueta y entrada para el precio
         self.label2 = ttk.Label(self.label_frame1, text="Price:")
         self.label2.grid(column=0, row=1, padx=4, pady=4)
         self.price_load = tk.StringVar()
         self.entry_price = ttk.Entry(self.label_frame1, textvariable=self.price_load)
         self.entry_price.grid(column=1, row=1, padx=4, pady=4)
 
-        self.button1 = ttk.Button(
-            self.label_frame1, text="Confirm", command=self.add_item
-        )
+        # Creación del botón para confirmar la carga del artículo
+        self.button1 = ttk.Button(self.label_frame1, text="Confirm", command=self.add_item)
         self.button1.grid(column=1, row=2, padx=4, pady=4)
 
     # -----------------------------------------------------
@@ -115,10 +115,10 @@ class Form:
 
         self.label2.grid(column=0, row=1, padx=4, pady=4)
         self.description = tk.StringVar()
-        self.entry_description = ttk.Entry(
+        self.entry_name = ttk.Entry(
             self.label_frame2, textvariable=self.description, state="readonly"
         )
-        self.entry_description.grid(column=1, row=1, padx=4, pady=4)
+        self.entry_name.grid(column=1, row=1, padx=4, pady=4)
         self.label3 = ttk.Label(self.label_frame2, text="Price:")
         self.label3.grid(column=0, row=2, padx=4, pady=4)
         self.price = tk.StringVar()
