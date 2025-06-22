@@ -44,9 +44,9 @@ class Form:
 
         # -------------------------------------------------
         # Creación de las pestañas del cuaderno
-        self.frame_new_item()
-        self.frame_find_item()
-        self.frame_all_items()
+        self.tab_new_item()
+        self.tab_find_item()
+        self.tab_all_items()
         # -------------------------------------------------
 
         # -------------------------------------------------
@@ -60,7 +60,7 @@ class Form:
     # -----------------------------------------------------
 
     # -----------------------------------------------------
-    def frame_new_item(self):
+    def tab_new_item(self):
         self.page1 = ttk.Frame(self.notebook)
         self.notebook.add(self.page1, text="Load Items")
         self.label_frame1 = ttk.LabelFrame(self.page1, text="Item")
@@ -99,7 +99,7 @@ class Form:
     # -----------------------------------------------------
 
     # -----------------------------------------------------
-    def frame_find_item(self):
+    def tab_find_item(self):
         self.page2 = ttk.Frame(self.notebook)
         self.notebook.add(self.page2, text="Query by Code")
         self.label_frame2 = ttk.LabelFrame(self.page2, text="Item")
@@ -148,7 +148,7 @@ class Form:
     # -----------------------------------------------------
 
     # -----------------------------------------------------
-    def frame_all_items(self):
+    def tab_all_items(self):
         self.page3 = ttk.Frame(self.notebook)
         self.notebook.add(self.page3, text="Full List")
         self.label_frame3 = ttk.LabelFrame(self.page3, text="Items")
