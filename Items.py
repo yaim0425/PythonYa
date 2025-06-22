@@ -24,12 +24,12 @@ class Items:
     # -----------------------------------------------------
     def open(self):
         # Obtenemos la ruta del archivo actual
-        ruta_base = os.path.dirname(os.path.abspath(__file__))
-        ruta_db = os.path.join(ruta_base, "items.db")
+        path = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(path, "items.db")
 
         # Conectar a la base de datos
         # Si la base de datos no existe, la crea
-        conexion = sqlite3.connect(ruta_db)
+        conexion = sqlite3.connect(path)
 
         # Crear la tabla si no existe
         # Si la tabla ya existe, generará un error
