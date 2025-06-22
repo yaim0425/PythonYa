@@ -182,21 +182,33 @@ class Form:
         self.text_area.grid(column=0, row=0, padx=4, pady=4)
 
         self.button2 = ttk.Button(
-            self.label_frame3, text="Show Full List", command=self.show_full_list
+            self.label_frame3, text="Show Full List", command=self.show_all_items
         )
         self.button2.grid(column=0, row=1, padx=4, pady=4)
 
     # -----------------------------------------------------
 
     # -----------------------------------------------------
-    def show_full_list(self):
+    def show_all_items(self):
+        # Limpia el área de texto antes de mostrar los artículos
         response = self.item.get_all()
         self.text_area.delete("1.0", tk.END)
-        for row in response:
-            self.text_area.insert(
-                tk.END, f"Code: {row[0]}\nDescription: {row[1]}\nPrice: {row[2]}\n\n"
-            )
 
+        # Verifica si hay artículos para mostrar
+        if len(response) == 0:
+            mb.showinfo("Information", "No items found")
+            return
+
+        # Formatea y muestra los artículos en el área de texto
+        lista = []
+        for row in response:
+            texto = "\n".join([
+                "ID: " + str(row[0]),
+                "Name: " + row[1],
+                "Price: " + str(row[2])
+            ])
+            lista.append(texto)
+        print("\n\n".join(lista))
 
 # ---------------------------------------------------------
 
