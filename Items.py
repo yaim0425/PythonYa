@@ -8,13 +8,20 @@
 # https://www.tutorialesprogramacionya.com/pythonya/detalleconcepto.php?punto=88&codigo=89&inicio=75
 # ---------------------------------------------------------
 
-# Librería  para la pase de datos
-import sqlite3
 
 
-# Clase a usar
-class Items:
 # ---------------------------------------------------------
+# Librería para la pase de datos
+# ---------------------------------------------------------
+import sqlite3
+# ---------------------------------------------------------
+
+
+# ---------------------------------------------------------
+# Clase a usar
+# ---------------------------------------------------------
+class Items:
+    # -----------------------------------------------------
     def open(self):
         # Conectar a la base de datos
         # Si la base de datos no existe, la crea
@@ -37,9 +44,9 @@ class Items:
         # Retornar la conexión
         # para que se pueda usar en otras funciones
         return conexion
-# ---------------------------------------------------------
+    # -----------------------------------------------------
 
-# ---------------------------------------------------------
+    # -----------------------------------------------------
     def add(self, data):
         # Abre la conexión a la base de datos
         cone = self.open()
@@ -65,9 +72,9 @@ class Items:
 
         # Se cierra la conexión
         cone.close()
-# ---------------------------------------------------------
+    # -----------------------------------------------------
 
-# ---------------------------------------------------------
+    # -----------------------------------------------------
     def get_id(self, data):
         try:
             # Abre la conexión a la base de datos
@@ -94,9 +101,9 @@ class Items:
         finally:
             # Se cierra la conexión
             cone.close()
-# ---------------------------------------------------------
+    # -----------------------------------------------------
 
-# ---------------------------------------------------------
+    # -----------------------------------------------------
     def get_all(self):
         try:
             # Abre la conexión a la base de datos
