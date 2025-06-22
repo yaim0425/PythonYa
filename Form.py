@@ -93,6 +93,7 @@ class Form:
         # Verifica que los campos no estén vacíos
         if not self.name_new_item.get() or not self.price_new_item.get():
             mb.showerror("Error", "Please fill in all fields")
+            self.name_new_item.focus()
             return 
         
         # Verifica que el precio sea un número válido
@@ -100,6 +101,7 @@ class Form:
             float(self.price_new_item.get())
         except ValueError:
             mb.showerror("Error", "Price must be a valid number")
+            self.price_new_item.focus()
             return
 
         # Verifica que el nombre no exista ya en la base de datos
@@ -107,6 +109,7 @@ class Form:
         for item in all_items:
             if item[1].lower() == self.name_new_item.get().lower():
                 mb.showerror("Error", "Item already exists")
+                self.name_new_item.focus()
                 return
 
         # Agrega el artículo a la base de datos
