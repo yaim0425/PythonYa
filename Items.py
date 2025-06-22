@@ -24,7 +24,7 @@ class Items:
     def open(self):
         # Conectar a la base de datos
         # Si la base de datos no existe, la crea
-        conexion = sqlite3.connect("items.db")
+        conexion = sqlite3.connect("data_base.db")
 
         # Crear la tabla si no existe
         # Si la tabla ya existe, generará un error
