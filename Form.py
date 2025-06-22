@@ -56,7 +56,6 @@ class Form:
         # Mostrar la ventana principal
         # Esto inicia el bucle principal de la interfaz gráfica
         self.window.mainloop()
-
     # -----------------------------------------------------
 
 
@@ -91,7 +90,6 @@ class Form:
         # Creación del botón para confirmar la carga del artículo
         self.button = ttk.Button(self.label_frame1, text="Confirm", command=self.add_item)
         self.button.grid(column=1, row=2, padx=4, pady=4)
-
     # -----------------------------------------------------
 
     # -----------------------------------------------------
@@ -128,7 +126,6 @@ class Form:
         # Creación del botón para consultar el artículo por código
         self.button = ttk.Button(self.label_frame2, text="Consult", command=self.consult)
         self.button.grid(column=1, row=3, padx=4, pady=4)
-
     # -----------------------------------------------------
 
     # -----------------------------------------------------
@@ -148,7 +145,6 @@ class Form:
         # Creación del botón para mostrar todos los artículos
         self.button = ttk.Button(self.label_frame3, text="Show full list", command=self.show_all_items)
         self.button.grid(column=0, row=1, padx=4, pady=4)
-
     # -----------------------------------------------------
 
 
@@ -185,7 +181,6 @@ class Form:
         self.new_name.set("")
         self.new_price.set("")
         self.entry_new_name.focus()
-
     # -----------------------------------------------------
 
     # -----------------------------------------------------
@@ -202,7 +197,6 @@ class Form:
             self.name_find_item.set("")
             self.price_find_item.set("")
         self.entry_id_find_item.focus()
-
     # -----------------------------------------------------
 
     # -----------------------------------------------------
@@ -226,5 +220,4 @@ class Form:
             ])
             lista.append(texto)
         self.text_area.insert(tk.END, "\n\n".join(lista))
-
 # ---------------------------------------------------------
