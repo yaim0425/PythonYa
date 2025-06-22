@@ -12,6 +12,7 @@
 # ---------------------------------------------------------
 # Librerías a usar
 # ---------------------------------------------------------
+import os
 import sqlite3
 # ---------------------------------------------------------
 
@@ -22,9 +23,13 @@ import sqlite3
 class Items:
     # -----------------------------------------------------
     def open(self):
+        # Obtenemos la ruta del archivo actual
+        ruta_base = os.path.dirname(os.path.abspath(__file__))
+        ruta_db = os.path.join(ruta_base, "items.db")
+
         # Conectar a la base de datos
         # Si la base de datos no existe, la crea
-        conexion = sqlite3.connect("items.db")
+        conexion = sqlite3.connect(ruta_db)
 
         # Crear la tabla si no existe
         # Si la tabla ya existe, generará un error
