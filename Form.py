@@ -208,7 +208,7 @@ class Form:
                 "Price: " + str(row[2])
             ])
             lista.append(texto)
-        print("\n\n".join(lista))
+        self.text_area.insert(tk.END, "\n\n".join(lista))
 
 # ---------------------------------------------------------
 
