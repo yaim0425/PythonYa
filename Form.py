@@ -8,6 +8,7 @@
 # ---------------------------------------------------------
 
 
+
 # ---------------------------------------------------------
 # Librerías a usar
 # ---------------------------------------------------------
@@ -18,6 +19,7 @@ from tkinter import scrolledtext as st
 # ---------------------------------------------------------
 import Items
 # ---------------------------------------------------------
+
 
 
 # ---------------------------------------------------------
@@ -57,66 +59,38 @@ class Form:
 
     # -----------------------------------------------------
 
+
+
+
+
     # -----------------------------------------------------
     def tab_new_item(self):
         # Creación de la pestaña para nuevos artículos
         self.page1 = ttk.Frame(self.notebook)
-        self.notebook.add(self.page1, text="New items")
+        self.notebook.add(self.page1, text=" New items ")
 
         # Creación del marco de etiqueta para el artículo
         self.label_frame1 = ttk.LabelFrame(self.page1, text="Item")
         self.label_frame1.grid(column=0, row=0, padx=5, pady=10)
 
         # Creación de la etiqueta y entrada para el nombre
-        self.label1 = ttk.Label(self.label_frame1, text="Name:")
-        self.label1.grid(column=0, row=0, padx=4, pady=4)
-        self.name_new_item = tk.StringVar()
-        self.entry_name = ttk.Entry(self.label_frame1, textvariable=self.name_new_item)
-        self.entry_name.grid(column=1, row=0, padx=4, pady=4)
-        self.entry_name.focus()
+        self.label = ttk.Label(self.label_frame1, text="Name:")
+        self.label.grid(column=0, row=0, padx=4, pady=4)
+        self.new_name = tk.StringVar()
+        self.entry_new_name = ttk.Entry(self.label_frame1, textvariable=self.new_name)
+        self.entry_new_name.grid(column=1, row=0, padx=4, pady=4)
+        self.entry_new_name.focus()
 
         # Creación de la etiqueta y entrada para el precio
-        self.label2 = ttk.Label(self.label_frame1, text="Price:")
-        self.label2.grid(column=0, row=1, padx=4, pady=4)
-        self.price_new_item = tk.StringVar()
-        self.entry_price = ttk.Entry(self.label_frame1, textvariable=self.price_new_item)
-        self.entry_price.grid(column=1, row=1, padx=4, pady=4)
+        self.label = ttk.Label(self.label_frame1, text="Price:")
+        self.label.grid(column=0, row=1, padx=4, pady=4)
+        self.new_price = tk.StringVar()
+        self.entry_new_price = ttk.Entry(self.label_frame1, textvariable=self.new_price)
+        self.entry_new_price.grid(column=1, row=1, padx=4, pady=4)
 
         # Creación del botón para confirmar la carga del artículo
-        self.button1 = ttk.Button(self.label_frame1, text="Confirm", command=self.add_item)
-        self.button1.grid(column=1, row=2, padx=4, pady=4)
-
-    # -----------------------------------------------------
-
-    # -----------------------------------------------------
-    def add_item(self):
-        # Verifica que los campos no estén vacíos
-        if not self.name_new_item.get() or not self.price_new_item.get():
-            mb.showerror("Error", "Please fill in all fields")
-            self.name_new_item.focus()
-            return 
-        
-        # Verifica que el precio sea un número válido
-        try:
-            float(self.price_new_item.get())
-        except ValueError:
-            mb.showerror("Error", "Price must be a valid number")
-            self.price_new_item.focus()
-            return
-
-        # Verifica que el nombre no exista ya en la base de datos
-        all_items = self.item.get_all()
-        for item in all_items:
-            if item[1].lower() == self.name_new_item.get().lower():
-                mb.showerror("Error", "Item already exists")
-                self.name_new_item.focus()
-                return
-
-        # Agrega el artículo a la base de datos
-        self.item.add((self.name_new_item.get(), self.price_new_item.get()))
-        mb.showinfo("Information", "Data has been loaded")
-        self.name_new_item.set("")
-        self.price_new_item.set("")
+        self.button = ttk.Button(self.label_frame1, text="Confirm", command=self.add_item)
+        self.button.grid(column=1, row=2, padx=4, pady=4)
 
     # -----------------------------------------------------
 
@@ -124,67 +98,110 @@ class Form:
     def tab_find_item(self):
         # Creación de la pestaña para consultar artículos por código
         self.page2 = ttk.Frame(self.notebook)
-        self.notebook.add(self.page2, text="Query by Code")
+        self.notebook.add(self.page2, text=" Consult by ID ")
 
         # Creación del marco de etiqueta para el artículo
         self.label_frame2 = ttk.LabelFrame(self.page2, text="Item")
         self.label_frame2.grid(column=0, row=0, padx=5, pady=10)
 
         # Creación de la etiqueta y entrada para el código
-        self.label1 = ttk.Label(self.label_frame2, text="Code:")
-        self.label1.grid(column=0, row=0, padx=4, pady=4)
-        self.code = tk.StringVar()
-        self.entry_code = ttk.Entry(self.label_frame2, textvariable=self.code)
-        self.entry_code.grid(column=1, row=0, padx=4, pady=4)
+        self.label = ttk.Label(self.label_frame2, text="ID:")
+        self.label.grid(column=0, row=0, padx=4, pady=4)
+        self.id_find_item = tk.StringVar()
+        self.entry_id_find_item = ttk.Entry(self.label_frame2, textvariable=self.id_find_item)
+        self.entry_id_find_item.grid(column=1, row=0, padx=4, pady=4)
 
         # Creación de las etiquetas y entradas para el nombre y precio
-        self.label2 = ttk.Label(self.label_frame2, text="Name:")
-        self.label2.grid(column=0, row=1, padx=4, pady=4)
-        self.description = tk.StringVar()
-        self.entry_name = ttk.Entry(self.label_frame2, textvariable=self.description, state="readonly")
-        self.entry_name.grid(column=1, row=1, padx=4, pady=4)
+        self.label = ttk.Label(self.label_frame2, text="Name:")
+        self.label.grid(column=0, row=1, padx=4, pady=4)
+        self.name_find_item = tk.StringVar()
+        self.entry_name_find_item = ttk.Entry(self.label_frame2, textvariable=self.name_find_item, state="readonly")
+        self.entry_name_find_item.grid(column=1, row=1, padx=4, pady=4)
 
         # Creación de la etiqueta y entrada para el precio
-        self.label3 = ttk.Label(self.label_frame2, text="Price:")
-        self.label3.grid(column=0, row=2, padx=4, pady=4)
-        self.price = tk.StringVar()
-        self.entry_price = ttk.Entry(self.label_frame2, textvariable=self.price, state="readonly")
-        self.entry_price.grid(column=1, row=2, padx=4, pady=4)
+        self.label = ttk.Label(self.label_frame2, text="Price:")
+        self.label.grid(column=0, row=2, padx=4, pady=4)
+        self.price_find_item = tk.StringVar()
+        self.entry_price_find_item = ttk.Entry(self.label_frame2, textvariable=self.price_find_item, state="readonly")
+        self.entry_price_find_item.grid(column=1, row=2, padx=4, pady=4)
 
         # Creación del botón para consultar el artículo por código
-        self.button1 = ttk.Button(self.label_frame2, text="Consult", command=self.consult)
-        self.button1.grid(column=1, row=3, padx=4, pady=4)
-
-    # -----------------------------------------------------
-
-    # -----------------------------------------------------
-    def consult(self):
-        data = (self.code.get(),)
-        response = self.item.query(data)
-        if len(response) > 0:
-            self.description.set(response[0][0])
-            self.price.set(response[0][1])
-        else:
-            mb.showerror("Error", "Item not found")
-            self.description.set("")
-            self.price.set("")
+        self.button = ttk.Button(self.label_frame2, text="Consult", command=self.consult)
+        self.button.grid(column=1, row=3, padx=4, pady=4)
 
     # -----------------------------------------------------
 
     # -----------------------------------------------------
     def tab_all_items(self):
+        # Creación de la pestaña para mostrar todos los artículos
         self.page3 = ttk.Frame(self.notebook)
-        self.notebook.add(self.page3, text="Full List")
+        self.notebook.add(self.page3, text=" Full list ")
+
+        # Creación del marco de etiqueta para los artículos
         self.label_frame3 = ttk.LabelFrame(self.page3, text="Items")
         self.label_frame3.grid(column=0, row=0, padx=5, pady=10)
 
+        # Creación del área de texto para mostrar los artículos
         self.text_area = st.ScrolledText(self.label_frame3, width=40, height=10)
         self.text_area.grid(column=0, row=0, padx=4, pady=4)
 
-        self.button2 = ttk.Button(
-            self.label_frame3, text="Show Full List", command=self.show_all_items
-        )
-        self.button2.grid(column=0, row=1, padx=4, pady=4)
+        # Creación del botón para mostrar todos los artículos
+        self.button = ttk.Button(self.label_frame3, text="Show full list", command=self.show_all_items)
+        self.button.grid(column=0, row=1, padx=4, pady=4)
+
+    # -----------------------------------------------------
+
+
+
+
+
+    # -----------------------------------------------------
+    def add_item(self):
+        # Verifica que los campos no estén vacíos
+        if not self.new_name.get() or not self.new_price.get():
+            mb.showerror("Error", "Please fill in all fields")
+            self.entry_new_name.focus()
+            return 
+        
+        # Verifica que el precio sea un número válido
+        try:
+            float(self.new_price.get())
+        except ValueError:
+            mb.showerror("Error", "Price must be a valid number")
+            self.entry_new_price.focus()
+            return
+
+        # Verifica que el nombre no exista ya en la base de datos
+        all_items = self.item.get_all()
+        for item in all_items:
+            if item[1].lower() == self.new_name.get().lower():
+                mb.showerror("Error", "Item already exists")
+                self.entry_new_name.focus()
+                return
+
+        # Agrega el artículo a la base de datos
+        self.item.add((self.new_name.get(), self.new_price.get()))
+        mb.showinfo("Information", "Data has been loaded")
+        self.new_name.set("")
+        self.new_price.set("")
+        self.entry_new_name.focus()
+
+    # -----------------------------------------------------
+
+    # -----------------------------------------------------
+    def consult(self):
+        # Consulta el artículo por ID
+        response = self.item.get_id((self.id_find_item.get(),))
+        if len(response) > 0:
+            # Se encontró el artículo
+            self.name_find_item.set(response[0][0])
+            self.price_find_item.set(response[0][1])
+        else:
+            # No se encontró el artículo
+            mb.showerror("Error", "Item not found")
+            self.name_find_item.set("")
+            self.price_find_item.set("")
+        self.entry_id_find_item.focus()
 
     # -----------------------------------------------------
 
@@ -210,11 +227,4 @@ class Form:
             lista.append(texto)
         self.text_area.insert(tk.END, "\n\n".join(lista))
 
-# ---------------------------------------------------------
-
-
-# ---------------------------------------------------------
-# Ejecución del programa
-if __name__ == "__main__":
-    form = Form()
 # ---------------------------------------------------------
