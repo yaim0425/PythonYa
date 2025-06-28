@@ -1,4 +1,4 @@
-# 🐍 `Python_Ya`
+# 🐍 `PythonYa`
 
 Este repositorio contiene ejercicios y ejemplos prácticos en **Python**, compilados y aprendidos del sitio web [Tutoriales de Programación Ya](https://www.tutorialesprogramacionya.com/pythonya/).
 
